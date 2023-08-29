@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" style="background-color: #f2e4a2;">
+<html lang="en" style="background-color: #000;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,64 +12,167 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6491312193501315"
      crossorigin="anonymous"></script>
     <link rel="icon" href="{% static 'img/janus.ico' %}" type="image/x-icon">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #0a192f;
+        }
+        section {
+            background-color: #000;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .title {
+            text-align: center;
+            color: #64ffda;
+        }
+        .tag.is-info {
+            background-color: #64ffda;
+            color: #0a192f;
+        }
+        .slogan {
+            color: #a8b2d1;
+        }
+        .janusImg {
+            filter: invert(1);
+        }
+        .forms label {
+            color: #a8b2d1;
+        }
+        .forms input[type="file"] {
+            display: none;
+        }
+        #video-name, #image-name {
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .button.is-danger {
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .button.is-danger.is-loading {
+            background-color: #64ffda;
+            color: #0a192f;
+        }
+        .adsbygoogle {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
-   
-   
-        <section style="background-color: #f2e4a2; height: 85vh;  display: flex; justify-content: center; align-items: center; flex-direction: column;">
-          <img class="janusImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAk95UYQhx9Y8uLbPY8EeLyC7CFP4PmMTbqyRMpTw8rUHf2SJZe03mUjpS1u4JBsz4bAY&usqp=CAU">
-          <br><br>
-          <h1 style="text-align: center;" class="title">Janus AI <span class="tag is-info">Beta</span></h1>  
-          <p class="slogan" >Make Your Own Private Swap Face Videos For Free</p>
-            <div class="uploads">
-                <article style="display: flex; height: 100%;  display: flex; ">
-                <div   class="forms">
-                <form>
-                    <label for="video-upload">
-                        <img style="width: 100px;  cursor: pointer;" src="https://i.postimg.cc/vT7kQCN1/video-icon.png"></i>
-                        <input id="video-upload" style="display: none;" type="file"/>
-                        <br/>
-                        <span id="video-name"> Upload Video</span>
-                    </label>     
-                </form>
+    <section>
+        <img class="janusImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAk95UYQhx9Y8uLbPY8EeLyC7CFP4PmMTbqyRMpTw8rUHf2SJZe03mUjpS1u4JBsz4bAY&usqp=CAU">
+        <br><br>
+        <h1 class="title">Janus AI <span class="tag is-info">Beta</span></h1>  
+        <p class="slogan">Make Your Own Private Swap Face Videos For Free</p>
+        <div class="uploads">
+            <article style="display: flex; height: 100%; display: flex;">
+                <div class="forms">
+                    <form>
+                        <label for="video-upload">
+                            <img style="width: 100px; cursor: pointer;" src="https://i.postimg.cc/vT7kQCN1/video-icon.png">
+                            <input id="video-upload" style="display: none;" type="file"/>
+                            <br/>
+                            <span id="video-name">Upload Video</span>
+                        </label>     
+                    </form>
                 </div>
                 <div class="forms">
-                <form>
-                    <label for="image-upload">
-                        <img style="width: 100px; cursor: pointer;" src="https://i.postimg.cc/vmNdkRJb/icon-camera-512.webp "></i>
-                        <input id="image-upload" style="display: none;" type="file"/>
-                        <br/>
-                        <span id="image-name"> Upload Image </span>
-                    </label>     
-                </form>
+                    <form>
+                        <label for="image-upload">
+                            <img style="width: 100px; cursor: pointer;" src="https://i.postimg.cc/vmNdkRJb/icon-camera-512.webp">
+                            <input id="image-upload" style="display: none;" type="file"/>
+                            <br/>
+                            <span id="image-name">Upload Image</span>
+                        </label>     
+                    </form>
                 </div>
             </article>
-            </div>
+        </div>
 
-            
-            
-        <button class="button is-danger"  id='deep-fake' type="submit">
-          Swap</button>
+        <button class="button is-link is-large" id='deep-fake' type="submit" style="width: 135px;">Swap</button>
 
-        <button class="button is-danger is-loading" id="loader">Loading</button>
-        </section>
-        
-        
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6491312193501315"
+        <button class="button is-link is-loading is-large" id="loader">Loading</button>
+    </section>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6491312193501315"
      crossorigin="anonymous"></script>
-<!-- 1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6491312193501315"
-     data-ad-slot="8084124442"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    
+    <!-- 1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6491312193501315"
+         data-ad-slot="8084124442"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script>
+        const videoUpload = document.querySelector("#video-upload");
+const videoName = document.querySelector("#video-name");
+const imageUpload = document.querySelector("#image-upload");
+const imageName = document.querySelector("#image-name");
+const deepFake = document.querySelector("#deep-fake");
+const loader = document.querySelector("#loader");
+let selectedVideo = videoUpload.files[0];
+let selectedImage = imageUpload.files[0];
+loader.style.display = "none";
+videoUpload.onchange = () => {
+  selectedVideo = videoUpload.files[0];
+  videoName.innerText = selectedVideo.name;
+};
+
+imageUpload.onchange = () => {
+  selectedImage = imageUpload.files[0];
+  imageName.innerText = selectedImage.name;
+};
+
+deepFake.addEventListener("click", () => {
+  if (selectedVideo && selectedImage) {
+    loader.style.display = "block";
+    deepFake.style.display = "none";
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+    formData.append("video", selectedVideo);
+    formData.append("filename.avi", selectedVideo);
+
+    fetch("/api", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        loader.style.display = "none";
+
+        if (!response.ok) {
+          return response;
+        }
+        return response.blob();
+      })
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "output.avi";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        deepFake.style.display = "block";
+      })
+      .catch((error) => {
+        loader.style.display = "none";
+        console.error("Error:", error);
+        deepFake.style.display = "block";
+      });
+  }
+});
+    </script>
 </body>
-<script src="{%static 'js/swap.js'%}"></script>
 </html>
